@@ -31,7 +31,7 @@ source_suffix = '.rst'
 master_doc = 'index'
 
 # General information about the project.
-project = u'numberlike'
+project = u'Numberlike'
 copyright = u'2012, Anders Eurenius'
 
 # The version info for the project you're documenting, acts as replacement for
@@ -166,7 +166,7 @@ latex_paper_size = 'a4'
 # Grouping the document tree into LaTeX files. List of tuples
 # (source start file, target name, title, author, documentclass [howto/man]).
 latex_documents = [
-  ('index', 'numberlike.tex', u'numberlike Documentation',
+  ('index', 'Numberlike.tex', u'Numberlike Documentation',
    u'Anders Eurenius', 'manual'),
 ]
 
