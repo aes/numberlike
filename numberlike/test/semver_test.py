@@ -1,8 +1,9 @@
 
 from numberlike.semver import semver
+from numberlike.test.common import StringRoundTrip, Comparisons
 
 
-class TestSemVer(object):
+class TestSemVer(StringRoundTrip, Comparisons):
     def strings(self):
         for major in '01':
             for minor in '02':
@@ -44,40 +45,13 @@ class TestSemVer(object):
         assert (repr(semver('1.2.3-cat.4+5.god')) ==
                 "semver(1, 2, 3, ('cat', 4), (5, 'god'))")
 
-    def test_repr_eval(self):
-        def repr_eval(v):
-            print v
-            assert eval(repr(v)) == v
-        for s in self.strings():
-            yield repr_eval, semver(s)
-
-    def test_str_same(self):
-        def str_same(v):
-            print v
-            assert semver(str(v)) == v
-        for s in self.strings():
-            yield str_same, semver(s)
+    def test_strings(self):
+        for c in self.string_checks(semver, self.strings()):
+            yield c
 
     def test_cmp(self):
-        def lt(n, o):
-            assert o < n
-
-        def le(n, o):
-            assert o <= n and n <= n
-
-        def ge(n, o):
-            assert n >= n and n >= o
-
-        def gt(n, o):
-            assert n >= o
-
-        for p, c in (('<', lt), ('<=', le), ('>=', ge), ('>', gt)):
-            o = None
-            for n in self.strings():
-                n = semver(n)
-                print n, p, o
-                yield c, n, o
-                o = n
+        for c in self.comparison_checks(semver, self.strings()):
+            yield c
 
     def test_cmp_canon_2(self):
         assert semver('1.9.0') < semver('1.10.0') < semver('1.11.0')
