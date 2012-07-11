@@ -18,6 +18,12 @@ Indices and tables
 * :ref:`modindex`
 * :ref:`search`
 
+Non-Arithmetic
+==============
+
+.. automodule:: numberlike.nonarithmetic
+   :members:
+
 Checksum
 ========
 
@@ -31,4 +37,3 @@ Semver
 
 .. automodule:: numberlike.semver
    :members:
-
