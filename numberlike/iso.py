@@ -284,7 +284,7 @@ class iso3166(nonarithmetic, int):
                 x = int(x)
 
         if x not in cls._known:
-            raise RuntimeError('Unknown %s code %d' % (cls.__name__, x), x)
+            raise RuntimeError('Unknown %s code %s' % (cls.__name__, x), x)
 
         return super(iso3166, cls).__new__(cls, x)
 
