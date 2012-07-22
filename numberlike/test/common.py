@@ -33,6 +33,10 @@ class StringRoundTrip(object):
             yield str_ctor_check, cls, arg
             yield str_same_check, cls, arg
 
+    def test_strings(self):
+        for c in self.string_checks(self.cls, self.good):
+            yield c
+
 
 class Comparisons(object):
     def comparison_checks(self, cls, seq):
@@ -54,6 +58,11 @@ class Comparisons(object):
             for c in lt, le, ge, gt:
                 yield c, n, o
             o = n
+
+    def test_cmp(self):
+        for c in self.comparison_checks(self.cls, self.good):
+            yield c
+
 
 class BooleanLogic(object):
     def boolean_checks(self, true, false):
