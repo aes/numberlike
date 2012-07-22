@@ -12,6 +12,19 @@ def assert_raises(exc, fun, al=None, kw=None):
     assert raises(exc, fun, *(al or []), **(kw or {}))
 
 
+class Constructor(object):
+    def ctor_checks(self, cls, good, bad):
+        for x in self.good:
+            yield (lambda w: cls(w)), x
+
+        for x in self.bad:
+            yield assert_raises, Exception, cls, (x,)
+
+    def test_ctors(self):
+        for c in self.ctor_checks(self.cls, self.good, self.bad):
+            yield c
+
+
 class StringRoundTrip(object):
     def string_checks(self, cls, seq):
         def repr_eval_check(c, a):
