@@ -1,25 +1,23 @@
 
 from numberlike.iso import iso3166, iso7812
-from numberlike.test.common import raises, assert_raises, StringRoundTrip
+from numberlike.test.common import raises, StringRoundTrip, Constructor
 
 
-class TestIso3166(StringRoundTrip):
+class TestIso3166(StringRoundTrip, Constructor):
     _m = {
         2:   ('AW', 'AWW', "Kittens, People's Reposts of"),
         34:  ('FB', 'FRB', "Frobnia, I AM FROBNIA"),
         456: ('WZ', 'WAZ', "Wazland")}
+
+    cls = iso3166
+    good = (2, '34')
+    bad = (-1, 666, 'blef')
 
     def setup(self):
         self._k, iso3166._known = iso3166._known, dict(self._m)
 
     def teardown(self):
         self._k, iso3166._known = iso3166._known, self._k
-
-    def test_ctor_good(self):
-        assert iso3166(2)
-
-    def test_ctor_bad(self):
-        assert raises(Exception, iso3166, 5)
 
     def test_ctor_equiv(self):
         assert set(iso3166(n) for n in ('WZ', 'WAZ', "Wazland")) == set((456,))

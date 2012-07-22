@@ -4,6 +4,12 @@ from numberlike.test.common import StringRoundTrip, Comparisons
 
 
 class TestSemVer(StringRoundTrip, Comparisons):
+    cls = semver
+
+    @property
+    def good(self):
+        return self.strings()
+
     def strings(self):
         for major in '01':
             for minor in '02':
@@ -44,14 +50,6 @@ class TestSemVer(StringRoundTrip, Comparisons):
         print repr(semver('1.2.3-cat.4+5.god'))
         assert (repr(semver('1.2.3-cat.4+5.god')) ==
                 "semver(1, 2, 3, ('cat', 4), (5, 'god'))")
-
-    def test_strings(self):
-        for c in self.string_checks(semver, self.strings()):
-            yield c
-
-    def test_cmp(self):
-        for c in self.comparison_checks(semver, self.strings()):
-            yield c
 
     def test_cmp_canon_2(self):
         assert semver('1.9.0') < semver('1.10.0') < semver('1.11.0')
