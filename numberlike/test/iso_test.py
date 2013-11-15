@@ -1,5 +1,5 @@
-
-from numberlike.iso import iso3166, iso7812
+# -*- coding: utf-8 -*-
+from numberlike.iso import iso3166
 from numberlike.test.common import raises, StringRoundTrip, Constructor
 
 
@@ -25,19 +25,23 @@ class TestIso3166(StringRoundTrip, Constructor):
     def test_bool_coerce(self):
         assert bool(iso3166(34))
 
-
-
     def test_props_name(self):
-        def check_name(arg, name):      assert iso3166(arg).name == name
-        def check_short(arg, short):    assert iso3166(arg).short == short
-        def check_formal(arg, formal):  assert iso3166(arg).formal == formal
+        def check_name(arg, name):
+            assert iso3166(arg).name == name
+
+        def check_short(arg, short):
+            assert iso3166(arg).short == short
+
+        def check_formal(arg, formal):
+            assert iso3166(arg).formal == formal
 
         for num, a2, a3, name, short, formal in (
             (2,   'AW', 'AWW', "Kittens, People's Reposts of", "Kittens",
              "People's Reposts of Kittens"),
             (34,  'FB', 'FRB', "Frobnia, I AM FROBNIA", "Frobnia",
              "I AM FROBNIA"),
-            (456, 'WZ', 'WAZ', "Wazland", "Wazland", "Wazland")):
+            (456, 'WZ', 'WAZ', "Wazland", "Wazland", "Wazland")
+        ):
 
             for arg in (num, a2, a3, name):
                 yield check_name, arg, name

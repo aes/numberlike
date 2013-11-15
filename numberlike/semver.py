@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 try:
     string = basestring
@@ -131,8 +132,8 @@ class semver(tuple):
                 return semver(major, minor, patch,
                               alpha, build + split_idlist(other))
         elif isinstance(other, int):
-            return semver(major, minor, patch,
-                              alpha, build + (other,))
+            return semver(major, minor, patch, alpha, build + (other,))
+
         return NotImplemented
 
     def __sub__(self, other):
@@ -160,5 +161,4 @@ class semver(tuple):
                 return semver(major, minor, patch,
                               alpha + split_idlist(other), build)
         elif isinstance(other, int):
-            return semver(major, minor, patch,
-                              alpha + (other,), build)
+            return semver(major, minor, patch, alpha + (other,), build)

@@ -1,5 +1,4 @@
 # -*- coding: utf-8 -*-
-
 from numberlike.checksum import Luhn
 from numberlike.nonarithmetic import nonarithmetic
 
@@ -315,8 +314,6 @@ class iso3166(nonarithmetic, int):
 
     def __repr__(self):
         return "%s(%d)" % (self.__class__.__name__, self)
-
-
 
 
 class iso7812(nonarithmetic, long):

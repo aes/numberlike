@@ -1,8 +1,8 @@
+# -*- coding: utf-8 -*-
 from random import randint
-
 from numberlike.checksum import Luhn, Verhoeff, Mod7, Mod97, Isbn10
-# , Isbn13
 from common import assert_raises
+# FIXME: Isbn13
 
 
 class TestLuhn(object):

@@ -1,4 +1,4 @@
-
+# -*- coding: utf-8 -*-
 from numberlike.semver import semver
 from numberlike.test.common import StringRoundTrip, Comparisons
 

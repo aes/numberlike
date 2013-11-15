@@ -1,6 +1,6 @@
-
+# -*- coding: utf-8 -*-
 from numberlike.isbn import ISBN, ISBN10, ISBN13
-from numberlike.test.common import raises, assert_raises
+from numberlike.test.common import raises
 from numberlike.test.common import StringRoundTrip, Comparisons, Constructor
 
 

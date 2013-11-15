@@ -1,3 +1,4 @@
+# -*- coding: utf-8 -*-
 
 
 def raises(exc, fun, *al, **kw):
@@ -79,11 +80,26 @@ class Comparisons(object):
 
 class BooleanLogic(object):
     def boolean_checks(self, true, false):
-        def _f(f, t):           assert not f
-        def _t(f, t):           assert t
-        def _or(f, t):          assert t or True
-        def _and(f, t):         assert t and True
-        def _ror(f, t):         assert True or t
-        def _rand(f, t):        assert True and t
-        def _coerce_t(f, t):    assert bool(f)
-        def _coerce_f(f, t):    assert not bool(f)
+        def _f(f, t):
+            assert not f
+
+        def _t(f, t):
+            assert t
+
+        def _or(f, t):
+            assert t or True
+
+        def _and(f, t):
+            assert t and True
+
+        def _ror(f, t):
+            assert True or t
+
+        def _rand(f, t):
+            assert True and t
+
+        def _coerce_t(f, t):
+            assert bool(f)
+
+        def _coerce_f(f, t):
+            assert not bool(f)

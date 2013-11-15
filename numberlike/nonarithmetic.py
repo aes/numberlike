@@ -1,5 +1,6 @@
 # -*- coding: utf-8 -*-
 
+
 class nonarithmetic(object):
     """Base class to forbid arithmetic operations.
 
@@ -24,15 +25,16 @@ def _setup():
         sub truediv trunc xor"""
     plain = 'conjugate denominator imag numerator real'
 
-
     for s in score.split():
         q = s
+
         def raiser(*al, **kw):
             raise ArithmeticError('Arithmetic on code: __%s__' % q, q)
         setattr(nonarithmetic, "__%s__" % s, raiser)
 
     for p in plain.split():
         q = p
+
         def raiser(*al, **kw):
             raise ArithmeticError('Arithmetic on code: %s' % q, q)
         setattr(nonarithmetic, p, raiser)

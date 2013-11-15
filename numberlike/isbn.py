@@ -1,9 +1,10 @@
 # -*- coding: utf-8 -*-
-
 from numberlike import checksum
 
-try:     string = basestring
-except:  string = str
+try:
+    string = basestring
+except:
+    string = str
 
 
 class ISBN(tuple):
