@@ -25,11 +25,7 @@ class TestIso3166(StringRoundTrip, Constructor):
     def test_bool_coerce(self):
         assert bool(iso3166(34))
 
-    def test_bool_or(self):
-        assert None or iso3166(2)
 
-    def test_bool_or(self):
-        assert True and iso3166(456)
 
     def test_props_name(self):
         def check_name(arg, name):      assert iso3166(arg).name == name
