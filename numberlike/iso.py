@@ -92,7 +92,7 @@ class iso3166(nonarithmetic, int):
         232: ('ER', 'ERI', "Eritrea"),
         233: ('EE', 'EST', "Estonia"),
         231: ('ET', 'ETH', "Ethiopia"),
-        234: ('FO', 'FRO', "Faeroe Islands"),
+        234: ('FO', 'FRO', "Faroe Islands"),
         238: ('FK', 'FLK', "Falkland Islands (Malvinas)"),
         242: ('FJ', 'FJI', "Fiji, Republic of the Fiji Islands"),
         246: ('FI', 'FIN', "Finland, Republic of"),
