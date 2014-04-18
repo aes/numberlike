@@ -2,11 +2,13 @@
 
 
 def raises(exc, fun, *al, **kw):
+    z, x = None, None
     try:
-        e, _ = None, fun(*al, **kw)
-    except Exception, e:
-        pass
-    return isinstance(e, exc) and e
+        x, x = None, fun(*al, **kw)
+    except Exception as e:
+        z = e
+    x
+    return isinstance(z, exc) and z
 
 
 def assert_raises(exc, fun, al=None, kw=None):
@@ -66,8 +68,9 @@ class Comparisons(object):
         def gt(n, o):
             assert n > o
 
-        o = None
-        for n in seq:
+        seq = list(seq)
+        o = cls(seq[0])
+        for n in seq[1:]:
             n = cls(n)
             for c in lt, le, ge, gt:
                 yield c, n, o

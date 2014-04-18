@@ -7,6 +7,11 @@ try:
 except:
     string = str
 
+try:
+    long
+except:
+    long = int
+
 
 class iso3166(nonarithmetic, int):
     """Numeric ISO 3166 country code.
@@ -310,10 +315,10 @@ class iso3166(nonarithmetic, int):
     formal = formal()
 
     def __str__(self):
-        return "%d" % self
+        return "%d" % int(self)
 
     def __repr__(self):
-        return "%s(%d)" % (self.__class__.__name__, self)
+        return "%s(%d)" % (self.__class__.__name__, int(self))
 
 
 class iso7812(nonarithmetic, long):
@@ -342,7 +347,7 @@ class iso7812(nonarithmetic, long):
         if x < 10000000:
             raise ValueError('Number too short')
 
-        if x > 9999999999999999999L:
+        if x > 9999999999999999999:
             raise ValueError('Number too long')
 
         return super(iso7812, cls).__new__(cls, x)

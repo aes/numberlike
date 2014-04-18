@@ -22,7 +22,7 @@ class TestSemVer(StringRoundTrip, Comparisons):
 
     def test_ctor(self):
         def ctor(al, kw):
-            print al, kw
+            print (al, kw)
             semver(*al, **kw)
         for major in '01':
             for minor in '02':
@@ -47,7 +47,7 @@ class TestSemVer(StringRoundTrip, Comparisons):
                 "semver(1, 2, 3, ('cat', 'dog'), ('god',))")
 
     def test_repr_b(self):
-        print repr(semver('1.2.3-cat.4+5.god'))
+        print (repr(semver('1.2.3-cat.4+5.god')))
         assert (repr(semver('1.2.3-cat.4+5.god')) ==
                 "semver(1, 2, 3, ('cat', 4), (5, 'god'))")
 
@@ -60,11 +60,11 @@ class TestSemVer(StringRoundTrip, Comparisons):
 
     def test_in(self):
         def tin(a, b, x):
-            print a, b, x
+            print (a, b, x)
             assert (semver(a) in semver(b)) == x
 
         def acc(a, b, x):
-            print a, b, x
+            print (a, b, x)
             assert semver(b).accept(semver(a)) == x
 
         for f in (tin, acc):
@@ -80,11 +80,11 @@ class TestSemVer(StringRoundTrip, Comparisons):
 
     def test_add(self):
         def add_gt(a, b):
-            print a, b
+            print (a, b)
             assert a < a + b
 
         def add_lt(a, b):
-            print a, b
+            print (a, b)
             assert a > a + b
 
         for a, b in ((semver('2.3.4'), semver('0.0.1')),
@@ -112,11 +112,11 @@ class TestSemVer(StringRoundTrip, Comparisons):
 
     def test_sub(self):
         def sub_lt(a, b):
-            print a, b
+            print (a, b)
             assert a > a - b
 
         def sub_gt(a, b):
-            print a, b
+            print (a, b)
             assert a < a - b
 
         for a, b in ((semver('2.3.4'), semver('0.0.1')),

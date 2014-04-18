@@ -1,5 +1,10 @@
 # -*- coding: utf-8 -*-
 
+try:
+    long
+except:
+    long = int
+
 
 class Checksum(object):
     """Base class for checkdigit algorithms"""

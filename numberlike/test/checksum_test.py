@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 from random import randint
 from numberlike.checksum import Luhn, Verhoeff, Mod7, Mod97, Isbn10
-from common import assert_raises
+from numberlike.test.common import assert_raises
 # FIXME: Isbn13
 
 
@@ -18,7 +18,7 @@ class TestLuhn(object):
 
     def test_checkdigit(self):
         def check(n, c):
-            print n, c
+            print (n, c)
             assert Luhn.checkdigit(n) == c
 
         for n, c, z in self.data:
@@ -27,7 +27,7 @@ class TestLuhn(object):
 
     def test_verify(self):
         def check(n, x):
-            print n, x
+            print (n, x)
             assert Luhn.verify(n) == x
 
         for n, c, z in self.data:
@@ -38,7 +38,7 @@ class TestLuhn(object):
 
     def test_strip(self):
         def check(n, x):
-            print n, x
+            print (n, x)
             assert Luhn.strip(n) == x
 
         for n, c, z in self.data:
@@ -49,7 +49,7 @@ class TestLuhn(object):
 
     def test_protect(self):
         def check(n, x):
-            print n, x
+            print (n, x)
             assert Luhn.protect(n) == x
 
         for n, c, z in self.data:
@@ -67,7 +67,7 @@ class TestVerhoeff(object):
 
     def test_canon(self):
         def check(n, z):
-            print n, z, Verhoeff.protect(n)
+            print (n, z, Verhoeff.protect(n))
             assert Verhoeff.protect(n) == z
         for n, c, z in self.data:
             yield check, n, z
@@ -82,7 +82,7 @@ class TestMod(object):
         for csum in (Mod7, Mod97):
             for i in range(1000):
                 x = randint(0, 2 ** 32 - 1)
-                print csum, x
+                print (csum, x)
                 csum.strip(csum.protect(x))
 
 
@@ -93,7 +93,7 @@ class TestISBN10(object):
 
     def test_canon(self):
         def check(n, z):
-            print n, z, Isbn10.protect(n)
+            print (n, z, Isbn10.protect(n))
             assert Isbn10.protect(n) == z
         for n, c, z in self.data:
             yield check, n, z
@@ -101,7 +101,7 @@ class TestISBN10(object):
     def test_roundtrip(self):
         for i in range(1000):
             x = randint(0, 2 ** 32 - 1)
-            print x
+            print (x)
             Isbn10.strip(Isbn10.protect(x))
 
 
@@ -112,7 +112,7 @@ class TstISBN10(object):
 
     def test_canon(self):
         def check(n, z):
-            print n, z, Isbn10.protect(n)
+            print (n, z, Isbn10.protect(n))
             assert Isbn10.protect(n) == z
         for n, c, z in self.data:
             yield check, n, z

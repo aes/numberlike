@@ -5,6 +5,11 @@ try:
 except:
     string = str
 
+try:
+    cmp
+except:
+    cmp = lambda a, b: (a > b) - (a < b)
+
 
 def split_idlist(s):
     if isinstance(s, string):
@@ -86,7 +91,7 @@ class semver(tuple):
             cmp((major, minor, patch),
                 (other.major, other.minor, other.patch)) or
             -cmp(bool(alpha), bool(other.alpha)) or
-            cmp(alpha, other.alpha) or
+            cmp([str(x) for x in alpha], [str(x) for x in other.alpha]) or
             cmp(build, other.build))
 
     def __lt__(self, other):
